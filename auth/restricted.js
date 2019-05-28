@@ -1,7 +1,7 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require('./node_modules/bcryptjs');
 
 // const Users = require('../users/users-model.js');
-const jwt = require('jsonwebtoken');
+const jwt = require('./node_modules/jsonwebtoken');
 const secrets = require('./auth-router.js');
 
 module.exports = (req, res, next) => {
