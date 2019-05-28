@@ -1,6 +1,6 @@
-const router = require('express').Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const router = require('./node_modules/express').Router();
+const bcrypt = require('./node_modules/bcryptjs');
+const jwt = require('./node_modules/jsonwebtoken');
 
 const Users = require('../users/users-model.js');
 
