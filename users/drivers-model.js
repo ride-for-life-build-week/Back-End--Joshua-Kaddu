@@ -10,22 +10,23 @@ module.exports = {
 };
 
 function find() {
-	return db('users').select('id', 'username', 'password');
+	return db('drivers').select('id', 'username', 'password');
 }
 
 function findBy(filter) {
-	return db('users').where(filter);
+	return db('drivers').where(filter);
 }
 
-async function add(user) {
-	const [ id ] = await db('users').insert(user);
+async function add(driver) {
+	const [ id ] = await db('drivers').insert(driver);
 
 	return findById(id);
 }
 
 function findById(id) {
-	return db('users').where({ id }).first();
+	return db('drivers').where({ id }).first();
 }
+
 function update(id, changes) {
 	return db('projects').where('id', id).update(changes).then((count) => (count > 0 ? this.get(id) : null));
 }
