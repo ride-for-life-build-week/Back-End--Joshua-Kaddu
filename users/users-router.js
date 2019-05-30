@@ -41,7 +41,7 @@ router.put('/:id', (req, res) => {
 	const { id } = req.params;
 	const user = req.body;
 
-	if (!user.username || !user.password) {
+	if (!user.review) {
 		res.status(404).json({ message: 'Please provide name and description.' });
 	}
 	Users.update(id, user)
