@@ -18,7 +18,7 @@ function findBy(filter) {
 }
 
 async function add(driver) {
-	const [ id ] = await db('drivers').insert(driver);
+	const [ id ] = await db('driver reviews').insert(driver);
 
 	return findById(id);
 }
