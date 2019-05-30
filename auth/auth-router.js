@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const Users = require('../users/users-model.js');
-const Drivers = require('../users/users-model.js');
 
 // for endpoints beginning with /auth
 router.post('/register', (req, res) => {

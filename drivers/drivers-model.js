@@ -18,7 +18,7 @@ function findBy(filter) {
 }
 
 async function add(driver) {
-	const [ id ] = await db('drivers').insert(driver);
+	const [ id ] = await db('driver reviews').insert(driver);
 
 	return findById(id);
 }
@@ -28,9 +28,9 @@ function findById(id) {
 }
 
 function update(id, changes) {
-	return db('projects').where('id', id).update(changes).then((count) => (count > 0 ? this.get(id) : null));
+	return db('drivers').where('id', id).update(changes).then((count) => (count > 0 ? this.get(id) : null));
 }
 
 function remove(id) {
-	return db('projects').where('id', id).del();
+	return db('drivers').where('id', id).del();
 }
