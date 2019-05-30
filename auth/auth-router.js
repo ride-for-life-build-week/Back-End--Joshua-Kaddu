@@ -1,10 +1,11 @@
-const router = require('./node_modules/express').Router();
-const bcrypt = require('./node_modules/bcryptjs');
-const jwt = require('./node_modules/jsonwebtoken');
+const router = require('express').Router();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const Users = require('../users/users-model.js');
+const Drivers = require('../users/users-model.js');
 
-// for endpoints beginning with /api/auth
+// for endpoints beginning with /auth
 router.post('/register', (req, res) => {
 	let user = req.body;
 	const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
