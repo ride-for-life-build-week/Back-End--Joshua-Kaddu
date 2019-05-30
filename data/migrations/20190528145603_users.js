@@ -5,7 +5,8 @@ exports.up = function(knex) {
 		users.string('username').notNullable().unique();
 		users.string('password').notNullable();
 		users.string('email').notNullable();
-		users.string('name').notNullable().unique();
+		users.string('name').notNullable();
+		users.boolean('driver').notNullable();
 	});
 };
 

@@ -2,7 +2,7 @@ exports.up = function(knex) {
 	return knex.schema.createTable('driver reviews', (users) => {
 		users.increments();
 
-		users.string('reviews').notNullable();
+		users.string('review').notNullable();
 	});
 };
 
