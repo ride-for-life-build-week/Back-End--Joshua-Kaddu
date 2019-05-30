@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
 		tbl.increments();
 		tbl.string('review').notNullable();
 
-		tbl.integer('driver_id').unsigned().notNullable().reference('id').inTable('users');
+		tbl.integer('driver_id').unsigned().notNullable().reference('id').inTable('drivers');
 	});
 };
 
