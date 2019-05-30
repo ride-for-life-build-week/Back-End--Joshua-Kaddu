@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 router.post('/review', (req, res) => {
 	let user = req.body;
 
-	Users.add(user)
+	Drivers.add(user)
 		.then((saved) => {
 			res.status(201).json(saved);
 		})
@@ -23,9 +23,9 @@ router.post('/review', (req, res) => {
 		});
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/review/:id', (req, res) => {
 	const { id } = req.params;
-	Users.remove(id)
+	Drivers.remove(id)
 		.then((deleted) => {
 			if (deleted === 0) {
 				res.status(404).json({ error: 'Driver ID not found.' });
@@ -37,14 +37,14 @@ router.delete('/:id', (req, res) => {
 		});
 });
 
-router.put('/:id', (req, res) => {
+router.put('/review/:id', (req, res) => {
 	const { id } = req.params;
 	const user = req.body;
 
 	if (!user.review) {
 		res.status(404).json({ message: 'Please provide driver review.' });
 	}
-	Users.update(id, user)
+	Drivers.update(id, user)
 		.then((user) => {
 			if (!user) {
 				res.status(404).json({ message: 'User with ID was not found.' });
