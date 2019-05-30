@@ -5,8 +5,7 @@ exports.up = function(knex, Promise) {
 		tbl.string('password').notNullable();
 		tbl.string('email').notNullable();
 		tbl.string('name').notNullable();
-
-		tbl.integer('driver_id').unsigned().notNullable().references('id').inTable('users');
+		tbl.string('bio').notNullable();
 	});
 };
 

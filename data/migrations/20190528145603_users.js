@@ -5,7 +5,7 @@ exports.up = function(knex) {
 		tbl.string('password').notNullable();
 		tbl.string('email').notNullable();
 		tbl.string('name').notNullable();
-		tbl.boolean('driver').notNullable();
+		tbl.boolean('driver').notNullable().defaultTo(false);
 	});
 };
 
