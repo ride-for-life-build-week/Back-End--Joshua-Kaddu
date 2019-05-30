@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const Drivers = require('./drivers-model.js');
+const Drivers = require('../drivers/drivers-model.js');
 // const restricted = require('../auth/restricted.js');
 
-router.get('/api/drivers', (req, res) => {
+router.get('/', (req, res) => {
 	Drivers.find()
 		.then((drivers) => {
 			res.json(drivers);
