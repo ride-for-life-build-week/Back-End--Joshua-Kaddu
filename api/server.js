@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const authRouter = require('../auth/auth-router.js');
 const usersRouter = require('../users/users-router.js');
-const driversRouter = require('../users/drivers-router.js');
+const driversRouter = require('../drivers/drivers-router.js');
 
 const server = express();
 
