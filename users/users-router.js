@@ -13,15 +13,15 @@ router.get('/', (req, res) => {
 });
 
 // adds new user
-router.post('/', () => {
-	Users.insert(req.body)
-		.then((id) => {
-			Users.where({ id }).first().then((res) => {
-				res.status(200).json(res);
-			});
+router.post('/', (req, res) => {
+	const user = req.body;
+
+	Users.add(user)
+		.then((saved) => {
+			res.status(201).json(saved);
 		})
-		.catch((err) => {
-			res.status(500).json(err.message);
+		.catch((error) => {
+			res.status(500).json(error.message);
 		});
 });
 

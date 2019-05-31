@@ -3,9 +3,9 @@ exports.up = function(knex, Promise) {
 		tbl.increments();
 		tbl.string('username').notNullable().unique();
 		tbl.string('password').notNullable();
-		tbl.string('email').notNullable();
-		tbl.string('name').notNullable();
-		tbl.boolean('driver').notNullable().defaultTo(false);
+		tbl.string('email');
+		tbl.string('name');
+		tbl.boolean('driver').defaultTo(false);
 	});
 };
 

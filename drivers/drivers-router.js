@@ -2,10 +2,11 @@ const router = require('express').Router();
 
 const Drivers = require('../drivers/drivers-model.js');
 
+// add new driver
 router.post('/', (req, res) => {
-	let user = req.body;
+	let driver = req.body;
 
-	Users.add(user)
+	Drivers.add(driver)
 		.then((saved) => {
 			res.status(201).json(saved);
 		})
@@ -14,6 +15,7 @@ router.post('/', (req, res) => {
 		});
 });
 
+// delete driver profile
 router.delete('/:id', (req, res) => {
 	const { id } = req.params;
 	Drivers.remove(id)
@@ -28,6 +30,7 @@ router.delete('/:id', (req, res) => {
 		});
 });
 
+// edit driver profile
 router.put('/:id', (req, res) => {
 	const { id } = req.params;
 	const user = req.body;
