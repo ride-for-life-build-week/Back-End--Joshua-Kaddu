@@ -4,16 +4,18 @@ const Review = require('./reviews-model.js');
 
 // add review
 router.post('/', (req, res) => {
-	let user = req.body;
+	let driver = req.body;
 
-	Review.insert(user)
-		.then((saved) => {
-			res.status(201).json(saved);
-		})
-		.catch((error) => {
-			// error.message allows you to see the error taking place
-			res.status(500).json(error.message);
-		});
+	if (driver.id) {
+		Review.insert(user)
+			.then((saved) => {
+				res.status(201).json(saved);
+			})
+			.catch((error) => {
+				// error.message allows you to see the error taking place
+				res.status(500).json(error.message);
+			});
+	}
 });
 
 // delete review
