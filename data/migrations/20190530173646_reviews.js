@@ -3,7 +3,14 @@ exports.up = function(knex, Promise) {
 		tbl.increments();
 		tbl.string('review').notNullable();
 
-		tbl.integer('driver_id').unsigned().notNullable().reference('id').inTable('drivers');
+		tbl
+			.string('driver_id')
+			.unsigned()
+			.notNullable()
+			.references('id')
+			.inTable('drivers')
+			.onDelete('CASCADE')
+			.onUpdate('CASCADE');
 	});
 };
 
