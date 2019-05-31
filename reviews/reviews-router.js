@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 const Review = require('./reviews-model.js');
 
+// add review
 router.post('/', (req, res) => {
 	let user = req.body;
 
@@ -15,6 +16,7 @@ router.post('/', (req, res) => {
 		});
 });
 
+// delete review
 router.delete('/:id', (req, res) => {
 	const { id } = req.params;
 	Review.remove(id)
@@ -29,6 +31,7 @@ router.delete('/:id', (req, res) => {
 		});
 });
 
+// update review
 router.put('/:id', (req, res) => {
 	const { id } = req.params;
 	const user = req.body;

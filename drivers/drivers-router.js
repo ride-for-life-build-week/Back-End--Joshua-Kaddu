@@ -2,6 +2,15 @@ const router = require('express').Router();
 
 const Drivers = require('../drivers/drivers-model.js');
 
+// returns all drivers
+router.get('/', (req, res) => {
+	Drivers.find()
+		.then((drivers) => {
+			res.status(200).json(drivers);
+		})
+		.catch((err) => res.send(err));
+});
+
 // add new driver
 router.post('/', (req, res) => {
 	let driver = req.body;
@@ -11,7 +20,7 @@ router.post('/', (req, res) => {
 			res.status(201).json(saved);
 		})
 		.catch((error) => {
-			res.status(500).json(error);
+			res.status(500).json(error.message);
 		});
 });
 
@@ -33,15 +42,13 @@ router.delete('/:id', (req, res) => {
 // edit driver profile
 router.put('/:id', (req, res) => {
 	const { id } = req.params;
-	const user = req.body;
+	const driver = req.body;
 
-	Drivers.update(id, user)
-		.then((user) => {
-			if (!user) {
-				res.status(404).json({ message: 'Driver with ID was not found.' });
-			} else {
-				res.status(200).json({ message: 'Driver updated.' });
-			}
+	Drivers.update(id, driver)
+		.then((driver) => {
+			// check if exist
+			if (!driver) return res.status(404).json({ error: "Specified ID doesn't exist" });
+			return res.status(200).json(driver);
 		})
 		.catch((err) => {
 			res.status(500).json(err.message);
