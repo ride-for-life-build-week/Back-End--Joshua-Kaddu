@@ -1,30 +1,31 @@
 const router = require('express').Router();
 
-const Drivers = require('../drivers/drivers-model.js');
+const Review = require('./reviews-model.js');
 
 router.post('/', (req, res) => {
 	let user = req.body;
 
-	Users.add(user)
+	Review.insert(user)
 		.then((saved) => {
 			res.status(201).json(saved);
 		})
 		.catch((error) => {
-			res.status(500).json(error);
+			// error.message allows you to see the error taking place
+			res.status(500).json(error.message);
 		});
 });
 
 router.delete('/:id', (req, res) => {
 	const { id } = req.params;
-	Drivers.remove(id)
+	Review.remove(id)
 		.then((deleted) => {
 			if (deleted === 0) {
 				res.status(404).json({ error: 'Driver ID not found.' });
 			}
-			res.status(200).json({ message: 'Driver Deleted' });
+			res.status(200).json.end();
 		})
 		.catch((err) => {
-			res.status(500).json(err.message);
+			res.status(500).json(err);
 		});
 });
 
@@ -32,13 +33,15 @@ router.put('/:id', (req, res) => {
 	const { id } = req.params;
 	const user = req.body;
 
-	Drivers.update(id, user)
+	if (!user.review) {
+		res.status(404).json({ message: 'Please provide driver review.' });
+	}
+	Review.update(id, user)
 		.then((user) => {
 			if (!user) {
 				res.status(404).json({ message: 'Driver with ID was not found.' });
-			} else {
-				res.status(200).json({ message: 'Driver updated.' });
 			}
+			res.status(200).json({ message: 'Review updated.' });
 		})
 		.catch((err) => {
 			res.status(500).json(err.message);
