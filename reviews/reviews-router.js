@@ -4,9 +4,9 @@ const Review = require('./reviews-model.js');
 
 // add review
 router.post('/', (req, res) => {
-	let driver = req.body;
+	let user = req.body;
 
-	if (driver.id) {
+	if (user.driver_id) {
 		Review.insert(user)
 			.then((saved) => {
 				res.status(201).json(saved);
